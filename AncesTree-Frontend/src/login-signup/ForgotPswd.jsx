@@ -10,7 +10,7 @@ export default function ForgotPassword() {
                 
             <Heading head="Login"/>
               <div className='ml-[20px] font-IBM-Plex-Mono text-[17px] font-semibold'>Forgot Password?</div>
-              <TextField head="Please enter the phone number you used to register" type="number"/>
+              <TextField head="Please enter the phone number you used to register" type="text"/>
               
               
               <SubmitButton action="Continue"/>

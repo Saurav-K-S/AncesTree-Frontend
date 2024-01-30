@@ -4,14 +4,36 @@ import TextField from "../../components/TextField";
 import SubmitButton from "../../components/SubmitButton";
 
 export default function SignUp(){
-    return <div className="w-full h-screen flex justify-center items-center">
-        <div className="w-[410px] h-[600px]">
+    function Submit() {
+        console.log(psswdcheck);
+        console.log(phonenumber);
+        console.log(password);
+        if (psswdcheck) {
+          
+          axios.post('https://ancestree-backend.onrender.com/api/v1/user/login', {
+              mobileNumber:phonenumber,
+              password:password
+          })
+          .then(function (response) {
+              console.log(response);
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
+        } else {
+          
+        }
+    }
+
+    return (<div className="w-full h-screen flex justify-center items-center">
+        <div className="w-[410px] h-[650px]">
             <Heading head="SignUp"/>
             <TextField head="Name"/>
             <TextField head="Email"/>
             <TextField head="Choose Password"/>
             <TextField head="Confirm Password"/>
-            <SubmitButton action="Continue"/>
+            <SubmitButton action="Continue" func={Submit}/>
         </div>
     </div>
+    )
 }
