@@ -1,7 +1,7 @@
 import React from "react";
-import Heading from "../../components/Heading";
-import TextField from "../../components/TextField";
-import SubmitButton from "../../components/SubmitButton";
+import Heading from "../../../components/Heading";
+import TextField from "../../../components/TextField";
+import SubmitButton from "../../../components/SubmitButton";
 
 export default function SignUpNumber(){
     return <div className="w-full h-screen flex justify-center items-center">

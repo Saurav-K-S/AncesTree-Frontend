@@ -1,11 +1,11 @@
 import React, {useState, useRef} from "react";
 import { Link, useNavigate  } from 'react-router-dom'; 
-import Heading from "../../components/Heading";
-import TextField from "../../components/TextField";
-import SubmitButton from "../../components/SubmitButton";
+import Heading from "../../../components/Heading";
+import TextField from "../../../components/TextField";
+import SubmitButton from "../../../components/SubmitButton";
 import axios from "axios";
 import PasswordChecklist from "react-password-checklist";
-import Alert from "../../components/Alert";
+import Alert from "../../../components/Alert";
 
 
 var psswdcheck = false;

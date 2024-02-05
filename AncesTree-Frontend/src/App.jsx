@@ -1,9 +1,10 @@
-import ForgotPassword from "./login-signup/ForgotPswd";
-import Login from "./login-signup/login/Login"
+import ForgotPassword from "./pages/login-signup/ForgotPswd";
+import Login from "./pages/login-signup/login/Login"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SignUp from "./login-signup/signup/SignUp";
-import SignUpNumber from "./login-signup/signup/SignUpNumber";
-import HomePage from "./homepage/HomePage";
+import SignUp from "./pages/login-signup/signup/SignUp";
+import SignUpNumber from "./pages/login-signup/signup/SignUpNumber";
+import HomePage from "./pages/homepage/HomePage";
+import TreePage from "./pages/treepage/TreePage";
 
 
 
@@ -14,6 +15,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/homepage" element={<HomePage/>} /> 
+        <Route path="/treepage" element={<TreePage/>} /> 
         <Route exact path="/login" element={<Login/>} />
         <Route exact path="/signup" element={<SignUp/>} />
         <Route exact path="/signupnumber" element={<SignUpNumber/>} />

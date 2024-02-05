@@ -1,7 +1,7 @@
 import React from "react";
-import Heading from "../../components/Heading";
-import TextField from "../../components/TextField";
-import SubmitButton from "../../components/SubmitButton";
+import Heading from "../../../components/Heading";
+import TextField from "../../../components/TextField";
+import SubmitButton from "../../../components/SubmitButton";
 
 export default function SignUp(){
     function Submit() {
