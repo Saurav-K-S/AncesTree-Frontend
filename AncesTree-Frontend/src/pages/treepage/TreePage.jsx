@@ -27,11 +27,32 @@ let orgChart = {
         { name: "Chacko", attributes: { id: "1.2.2" } },
       ],
     },
+    {
+      name: "Thomas",
+      attributes: {
+        id: "1.3",
+      },
+      children: [
+        { name: "Philomina", attributes: { id: "1.3.1" } },
+        { name: "Theresa", attributes: { id: "1.3.2" } },
+      ],
+    },
+    {
+      name: "Kuttapan",
+      attributes: {
+        id: "1.4",
+      },
+      children: [
+        { name: "Rayyappan", attributes: { id: "1.4.1" } },
+        { name: "Christy", attributes: { id: "1.4.2" } },
+      ],
+    },
   ],
 };
 
 const renderCustomNode = ({ nodeDatum, toggleNode }) => {
   // useEffect(()=>{},[])
+
   return (
     <g id={nodeDatum.name + "_id"} className="stroke-[1px]">
       <circle
@@ -39,6 +60,7 @@ const renderCustomNode = ({ nodeDatum, toggleNode }) => {
         className="fill-[#FFEEB2] stroke-none"
         onClick={() => toggleNode()}
       />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"></svg>
       <rect
         x={33}
         y={2}
@@ -83,9 +105,9 @@ const renderCustomNode = ({ nodeDatum, toggleNode }) => {
 
 export default function TreePage() {
   return (
-    <div id="treeWrapper" className="w-screen h-screen relative">
+    <div id="treeWrapper" className="w-[1100px] h-[700px] border-black  border-2">
       <Tree
-        translate={{ x: window.innerWidth / 2, y: 150 }}
+        translate={{ x: 550, y: 200 }}
         data={orgChart}
         pathFunc={"diagonal"}
         orientation="vertical"
