@@ -14,6 +14,6 @@ export default {
       'IBM-Plex-Mono': ['"IBM Plex Mono"', 'mono-space'],
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')({ nocompatible: true }),],
 }
 
