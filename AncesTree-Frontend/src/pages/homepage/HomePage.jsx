@@ -7,6 +7,7 @@ export default function HomePage() {
       <div className="w-auto h-[200px] mr-16 overflow-hidden rounded-[28px] flex justify-start items-start">
         <img
           src="src\assets\family_photo.png"
+          alt="IMAGE NOT FOUND!!!"
         />
       </div>
       <div className="flex justify-between items-center">
