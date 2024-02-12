@@ -14,7 +14,7 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/basepage" element={<BasePage/>} /> 
+        <Route path="/" element={<BasePage/>} /> 
         <Route path="/homepage" element={<HomePage/>} /> 
         <Route path="/treepage" element={<TreePage/>} /> 
         <Route path="/login" element={<Login/>} />
