@@ -5,7 +5,7 @@ import SignUp from "./pages/login-signup/signup/SignUp";
 import SignUpNumber from "./pages/login-signup/signup/SignUpNumber";
 import HomePage from "./pages/homepage/HomePage";
 import TreePage from "./pages/treepage/TreePage";
-
+import BasePage from "./pages/basepage/BasePage";
 
 
 function App() {
@@ -14,11 +14,12 @@ function App() {
 
     <Router>
       <Routes>
+        <Route path="/basepage" element={<BasePage/>} /> 
         <Route path="/homepage" element={<HomePage/>} /> 
         <Route path="/treepage" element={<TreePage/>} /> 
-        <Route exact path="/login" element={<Login/>} />
-        <Route exact path="/signup" element={<SignUp/>} />
-        <Route exact path="/signupnumber" element={<SignUpNumber/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/signupnumber" element={<SignUpNumber/>} />
         <Route path="/forgotpassword" element={<ForgotPassword/>} /> 
       </Routes>
     </Router>

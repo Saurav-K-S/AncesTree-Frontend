@@ -105,9 +105,9 @@ const renderCustomNode = ({ nodeDatum, toggleNode }) => {
 
 export default function TreePage() {
   return (
-    <div id="treeWrapper" className="w-[1100px] h-[700px] border-black  border-2">
+    <div id="treeWrapper" className="h-screen border-line">
       <Tree
-        translate={{ x: 550, y: 200 }}
+        translate={{ x: 525, y: 200 }}
         data={orgChart}
         pathFunc={"diagonal"}
         orientation="vertical"
