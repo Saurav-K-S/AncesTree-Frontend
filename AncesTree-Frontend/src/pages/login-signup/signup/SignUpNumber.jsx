@@ -19,18 +19,20 @@ export default function SignUpNumber(props) {
           props.otpFunc(response.data.otp);
           props.indexFunc(2);
         } else {
-          setAlertMsg(response.data.msg);
+          setAlertMsg(response.data.msg+" Click to go back to Sign In" );
           setShowAlert(true);
         }
       })
       .catch(function (error) {
         console.log(error);
-        setAlertMsg(error.response.data.msg);
+        setAlertMsg(error.response.data.msg+" Click to go back to Sign In");
         setShowAlert(true);
       });
   }
   const closeAlert = () => {
     setShowAlert(false);
+    props.indexFunc(0);
+
   };
   return (
     <div className="w-full h-screen flex justify-center items-center">
