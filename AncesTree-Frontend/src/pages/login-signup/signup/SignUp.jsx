@@ -1,39 +1,50 @@
-import React from "react";
-import Heading from "../../../components/Heading";
-import TextField from "../../../components/TextField";
-import SubmitButton from "../../../components/SubmitButton";
+import React, { useState, useRef } from "react";
+import SignUpEmail from "./SignUpEmail";
+import SignUpNumber from "./SignUpNumber";
+import OTP from "./OTP";
 
-export default function SignUp(){
-    function Submit() {
-        console.log(psswdcheck);
-        console.log(phonenumber);
-        console.log(password);
-        if (psswdcheck) {
-          
-          axios.post('https://ancestree-backend.onrender.com/api/v1/user/login', {
-              mobileNumber:phonenumber,
-              password:password
-          })
-          .then(function (response) {
-              console.log(response);
-          })
-          .catch(function (error) {
-              console.log(error);
-          });
-        } else {
-          
-        }
-    }
+export default function SignUp() {
+  const [index, setIndex] = useState(0);
 
-    return (<div className="w-full h-screen flex justify-center items-center">
-        <div className="w-[410px] h-[650px]">
-            <Heading head="SignUp"/>
-            <TextField head="Name"/>
-            <TextField head="Email"/>
-            <TextField head="Choose Password"/>
-            <TextField head="Confirm Password"/>
-            <SubmitButton action="Continue" func={Submit}/>
-        </div>
-    </div>
-    )
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassord] = useState("");
+  const [number, setNumber] = useState();
+
+  const [otpOG, setOtpOG] = useState("");
+
+  switch (index) {
+    case 0:
+      return (
+        <SignUpEmail
+          indexFunc={setIndex}
+          nameFunc={setName}
+          emailFunc={setEmail}
+          passwordFunc={setPassord}
+          passwordValue={password}
+        />
+      );
+    case 1:
+      return (
+        <SignUpNumber
+          indexFunc={setIndex}
+          numberFunc={setNumber}
+          numberValue={number}
+          otpFunc={setOtpOG}
+        />
+      );
+    case 2:
+      return (
+        <OTP
+          indexFunc={setIndex}
+          otpOGVal={otpOG}
+          nameValue={name}
+          emailValue={email}
+          passwordValue={password}
+          numberValue={number}
+        />
+      );
+    default:
+      break;
+  }
 }
