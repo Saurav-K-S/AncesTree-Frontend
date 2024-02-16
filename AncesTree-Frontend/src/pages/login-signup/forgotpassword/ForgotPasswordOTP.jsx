@@ -1,43 +1,20 @@
 import React, { useState } from "react";
 import OTPInput from "react-otp-input";
-import { useNavigate } from "react-router-dom";
 
 import Heading from "../../../components/Heading";
 import SubmitButton from "../../../components/SubmitButton";
 import Alert from "../../../components/Alert";
-import axios from "axios";
 
-export default function OTP(props) {
+export default function ForgotPasswordOTP(props) {
   const [otp, setOtp] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
-  const navigate = useNavigate();
 
   function Register() {
     if (props.otpOGVal == otp) {
-      axios
-        .post("https://ancestree-backend.onrender.com/api/v1/user/create", {
-          mobileNumber: Number(props.numberValue),
-          email: props.emailValue,
-          name: props.nameValue,
-          password: props.passwordValue,
-        })
-        .then(function (response) {
-          console.log(response);
-          if (response.data.success) {
-            navigate("/login");
-          } else {
-            setAlertMsg(response.data.msg);
-            setShowAlert(true);
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-          setAlertMsg(error.response.data.msg);
-          setShowAlert(true);
-        });
+      props.indexFunc(2);
     } else {
-      setAlertMsg("Invalid OTP! Click to go back to Sign In"),
+      setAlertMsg("Invalid OTP! Click to go back to Forgot Password Screen"),
         setShowAlert(true);
     }
   }
