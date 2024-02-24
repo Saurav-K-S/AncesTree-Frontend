@@ -2,49 +2,49 @@ import React, { useEffect } from "react";
 import Tree from "react-d3-tree";
 
 let orgChart = {
-  name: "Ponnappan",
+  name: "Adam Doe",
   attributes: {
     id: "1",
   },
   children: [
     {
-      name: "Kuttappan",
+      name: "Philip Baker Doe",
       attributes: {
         id: "1.1",
       },
       children: [
-        { name: "Chellappan", attributes: { id: "1.1.1" } },
-        { name: "Mary Kunj", attributes: { id: "1.1.2" } },
+        { name: "Clark Baker", attributes: { id: "1.1.1" } },
+        { name: "Mary Baker", attributes: { id: "1.1.2" } },
       ],
     },
     {
-      name: "Varkichan",
+      name: "Irwin Hills Doe",
       attributes: {
         id: "1.2",
       },
       children: [
-        { name: "Raphael", attributes: { id: "1.2.1" } },
-        { name: "Chacko", attributes: { id: "1.2.2" } },
+        { name: "Mason Hills", attributes: { id: "1.2.1" } },
+        { name: "Davis Hills", attributes: { id: "1.2.2" } },
       ],
     },
     {
-      name: "Thomas",
+      name: "Thomas Jones Doe",
       attributes: {
         id: "1.3",
       },
       children: [
-        { name: "Philomina", attributes: { id: "1.3.1" } },
-        { name: "Theresa", attributes: { id: "1.3.2" } },
+        { name: "Phillipa Jones", attributes: { id: "1.3.1" } },
+        { name: "Yennefer Jones", attributes: { id: "1.3.2" } },
       ],
     },
     {
-      name: "Kuttapan",
+      name: "Bruce Wayne Doe",
       attributes: {
         id: "1.4",
       },
       children: [
-        { name: "Rayyappan", attributes: { id: "1.4.1" } },
-        { name: "Christy", attributes: { id: "1.4.2" } },
+        { name: "Thomas Wayne", attributes: { id: "1.4.1" } },
+        { name: "Charles Wayne", attributes: { id: "1.4.2" } },
       ],
     },
   ],
@@ -57,14 +57,14 @@ const renderCustomNode = ({ nodeDatum, toggleNode }) => {
     <g id={nodeDatum.name + "_id"} className="stroke-[1px]">
       <circle
         r={35}
-        className="fill-[#FFEEB2] stroke-none"
+        className="fill-[#FFEEB2] stroke-black stroke-[2px]"
         onClick={() => toggleNode()}
       />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"></svg>
       <rect
         x={33}
         y={2}
-        width="150"
+        width="160"
         height="60"
         rx="18"
         ry="18"
