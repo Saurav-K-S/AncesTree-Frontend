@@ -5,6 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    rotate: {
+      '16': '16deg',
+      '7': '7deg',
+      '-2': '358deg',
+      '-11': '349deg',
+    },
     extend: {
       backgroundImage: {
         'hover-element': "url('src/assets/hover_element.png')",

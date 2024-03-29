@@ -43,7 +43,14 @@ let orgChart = {
         id: "1.4",
       },
       children: [
-        { name: "Thomas Wayne", attributes: { id: "1.4.1" } },
+        {
+          name: "Thomas Wayne",
+          attributes: { id: "1.4.1" },
+          children: [
+            // {},
+            { name: "qwerty Wayne", attributes: { id: "1.4.1.2" } },
+          ],
+        },
         { name: "Charles Wayne", attributes: { id: "1.4.2" } },
       ],
     },
