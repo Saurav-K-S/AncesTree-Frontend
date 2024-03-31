@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Profile() {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [number, setNumber] = useState();
+  const [id, setId] = useState();
+  useEffect(() => {
+    axios
+      .get("https://ancestree-backend.onrender.com/api/v1/user/view", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          setName(response.data.user.name);
+          setEmail(response.data.user.email);
+          setNumber(response.data.user.number);
+          setId(response.data.user.__v);
+        }
+      })
+      .catch((error) => {
+        console.error("Error :", error);
+        // Handle error response if needed
+      });
+  }, []);
   return (
     <div className="w-full h-screen flex justify-center items-center text-[100px] font-IBM-Plex-Mono">
       Profile Page

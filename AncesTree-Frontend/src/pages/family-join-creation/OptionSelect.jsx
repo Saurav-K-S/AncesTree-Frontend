@@ -2,15 +2,28 @@ import React from "react";
 import Heading from "../../components/Heading";
 
 export default function OptionSelect(props) {
+  function userJoin() {
+    props.indexFunc(2)
+    console.log("USER JOIN")
+    
+  }
+  function familyCreate() {
+    props.indexFunc(3)
+    console.log("FAMILY CREATE")
+    
+  }
+  
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
       <div>
         <Heading head={"Welcome " + props.name} />
-        <div className="text-[17px] font-semibold ml-[75px] font-IBM-Plex-Mono ">
+        <div className="qwert text-[17px] font-semibold ml-[75px] font-IBM-Plex-Mono ">
           Would you like to?
         </div>
-        <div className="flex justify-around items-center mt-9 ">
-          <div className="w-[175px] h-[185px] rounded-[18px] border-black border-[1.5px] border-dashed flex flex-col items-center justify-center hover:bg-[#FFEEB2] text-[#6A6A6A] hover:text-black transition-all ease-in-out duration-500">
+        <div className="flex justify-around items-center mt-9">
+          <div className="w-[175px] h-[185px] rounded-[18px] border-black border-[1.5px] border-dashed flex flex-col items-center justify-center hover:bg-[#FFEEB2] text-[#6A6A6A] hover:text-black transition-all ease-in-out duration-500 cursor-pointer"
+            onClick={userJoin}
+          >
             <svg
               width="47"
               height="33"
@@ -27,7 +40,7 @@ export default function OptionSelect(props) {
                 cy="16.5"
                 r="16.15"
                 stroke="#6A6A6A"
-                stroke-width="0.7"
+                strokeWidth="0.7"
               />
             </svg>
             <div className="text-[18px] mt-3 text-[#6A6A6A font-IBM-Plex-Mono text-center">
@@ -36,7 +49,8 @@ export default function OptionSelect(props) {
               Family
             </div>
           </div>
-          <div className="w-[175px] h-[185px] rounded-[18px] border-black border-[1.5px] border-dashed flex flex-col items-center justify-center hover:bg-[#FFEEB2] text-[#6A6A6A] hover:text-black transition-all ease-in-out duration-500">
+          <div className="w-[175px] h-[185px] rounded-[18px] border-black border-[1.5px] border-dashed flex flex-col items-center justify-center hover:bg-[#FFEEB2] text-[#6A6A6A] hover:text-black transition-all ease-in-out duration-500 cursor-pointer"
+          onClick={familyCreate}>
             <svg
               width="31"
               height="31"
@@ -48,9 +62,9 @@ export default function OptionSelect(props) {
               <path
                 d="M15.5 1V30M30 15.5H1"
                 stroke="#6A6A6A"
-                stroke-width="2"
-                stroke-linecap="square"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="square"
+                strokeLinejoin="round"
               />
             </svg>
 

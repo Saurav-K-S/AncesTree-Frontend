@@ -25,7 +25,7 @@ export default function OTP(props) {
         .then(function (response) {
           console.log(response);
           if (response.data.success) {
-            navigate("/login");
+            props.indexFunc(3)
           } else {
             setAlertMsg(response.data.msg);
             setShowAlert(true);

@@ -1,18 +1,42 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import { useEffect } from "react";
 
 export default function HomePage() {
+  const [familyName, setFamilyName] = useState("");
+  const [familyHistory, setFamilyHistory] = useState("");
+  const [todayEventList, setTodayEventList] = useState();
+  const [eventList, setEventList] = useState();
+  const date = new Date();
+
+  useEffect(() => {
+    axios
+      .get("https://ancestree-backend.onrender.com/api/v1/family/home", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          setFamilyName(response.data.home.name);
+          setFamilyHistory(response.data.home.history);
+        }
+      })
+      .catch((error) => {
+        console.error("Error :", error);
+        // Handle error response if needed
+      });
+  }, []);
   return (
     <div className="h-screen flex flex-col pt-14 pl-16   text-[100px]">
       <div className="w-auto h-[200px] mr-16 overflow-hidden rounded-[28px] flex justify-start items-start">
-        <img
-          src="src\assets\family_photo.png"
-          alt="IMAGE NOT FOUND!!!"
-        />
+        <img src="src\assets\family_photo.png" alt="IMAGE NOT FOUND!!!" />
       </div>
       <div className="flex justify-between items-center">
         <div>
           <div className="w-[180px] h-auto font-semibold text-[44px] ml-[25px] font-IBM-Plex-Mono">
-            Katoor Kudumbayogam
+            {familyName}
           </div>
           <div className="w-min h-auto mt-6 flex justify-start items-center ">
             <div className="bg-hover-element w-[85px] h-[85px] absolute bg-cover -z-10"></div>
@@ -21,17 +45,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="w-[680px] h-[165px] text-[18px] ml-[30px] mt-7 pr-4 font-IBM-Plex-Mono scrollbar-thumb-rounded-sm scrollbar-track-transparent scrollbar scrollbar-thumb-[#FFEEB2] overflow-y-scroll">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            egestas, lacus nec gravida euismod, sapien libero condimentum lacus,
-            ac malesuada quam nibh non augue.,
-            <br />,<br />
-            Nam tincidunt imperdiet sem, eget laoreet mauris aliquam quis.
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            egestas, lacus nec gravida euismod, sapien libero condimentum lacus,
-            ac malesuada quam nibh non augue.,
-            <br />,<br />
-            Nam tincidunt imperdiet sem, eget laoreet mauris aliquam quis.
+            {familyHistory}
           </div>
         </div>
         <div className="w-[275px] h-[420px] mr-16 mt-6 border-dashed border-black border-[0.6px] rounded-[18px] flex flex-col justify-start items-center">
@@ -40,9 +54,32 @@ export default function HomePage() {
           </div>
           <div className="h-[380px] flex flex-col justify-start items-start ml-4 scrollbar-thumb-rounded-sm scrollbar-track-transparent scrollbar scrollbar-thumb-[#FFEEB2] overflow-y-scroll">
             <div>
-              <div className="font-IBM-Plex-Mono text-[11px] text-[#656565]">Today</div>
-              <div className="font-IBM-Plex-Mono text-[16px] text-[#2D2D2D]">B’day Party</div>
-              <div className="font-IBM-Plex-Mono text-[11px] text-[#656565]">Get ready for the Party scheduled for 21/03/24</div>
+              <div className="font-IBM-Plex-Mono text-[11px] text-[#656565]">
+                Today
+              </div>
+              {todayEventList && todayEventList.map((eventData, index) => (
+                <div>
+                  <div className="font-IBM-Plex-Mono text-[16px] text-[#2D2D2D]">
+                    {eventData.name}
+                  </div>
+                  <div className="font-IBM-Plex-Mono text-[11px] text-[#656565]">
+                    {eventData.details} scheduled for {eventData.date}
+                  </div>
+                </div>
+              ))}
+              <div className="font-IBM-Plex-Mono text-[11px] text-[#656565]">
+                The Coming Days
+              </div>
+              {eventList && eventList.map((eventData, index) => (
+                <div>
+                  <div className="font-IBM-Plex-Mono text-[16px] text-[#2D2D2D]">
+                    {eventData.name}
+                  </div>
+                  <div className="font-IBM-Plex-Mono text-[11px] text-[#656565]">
+                    {eventData.details} scheduled for {eventData.date}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
