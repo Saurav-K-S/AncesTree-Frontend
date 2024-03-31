@@ -11,7 +11,7 @@ export default function SignUpNumber(props) {
   function Submit() {
     axios
       .post("https://ancestree-backend.onrender.com/api/v1/user/register", {
-        mobileNumber: Number(props.numberValue),
+        email: props.emailValue,
       })
       .then(function (response) {
         console.log(response);
@@ -41,7 +41,7 @@ export default function SignUpNumber(props) {
         <div className="ml-[20px] font-IBM-Plex-Mono text-[17px] font-semibold">
           OTP Verification
         </div>
-        <TextField head="Phone number" func={props.numberFunc} />
+        <TextField head="Email" func={props.emailFunc} />
         <SubmitButton action="Continue" func={Submit} />
         {showAlert && <Alert alertMsg={alertMsg} closeAlert={closeAlert} />}
       </div>

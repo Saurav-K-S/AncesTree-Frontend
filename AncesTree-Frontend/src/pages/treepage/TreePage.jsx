@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 
 let orgChart = {
   name: "Adam Doe",
+  gender:"male",
   attributes: {
     id: "1",
   },
@@ -43,7 +45,7 @@ let orgChart = {
         id: "1.4",
       },
       children: [
-        { name: "Thomas Wayne", attributes: { id: "1.4.1" } },
+        { name: "Thomas Wayne", attributes: { id: "1.4.1" }, children:[{name: "Thomas", attributes: { id: "1.4.1" }}] },
         { name: "Charles Wayne", attributes: { id: "1.4.2" } },
       ],
     },
@@ -51,32 +53,45 @@ let orgChart = {
 };
 
 const renderCustomNode = ({ nodeDatum, toggleNode }) => {
-  // useEffect(()=>{},[])
-
-  return (
-    <g id={nodeDatum.name + "_id"} className="stroke-[1px]">
+  
+  function getWidthOfText(txt){
+    if(getWidthOfText.c === undefined){
+      getWidthOfText.c=document.createElement('canvas');
+        getWidthOfText.ctx=getWidthOfText.c.getContext('2d');
+    }
+    var fontspec = '14' + ' ' + "IBM-Plex-Mono";
+    if(getWidthOfText.ctx.font !== fontspec)
+        getWidthOfText.ctx.font = fontspec;
+      console.log(getWidthOfText.ctx.measureText(txt).width)
+      return getWidthOfText.ctx.measureText(txt).width;
+    }
+    // useEffect(()=>{},[])
+    
+    return (
+      <g id={nodeDatum.name + "_id"} className="stroke-[1px]">
       <circle
         r={35}
         className="fill-[#FFEEB2] stroke-black stroke-[2px]"
         onClick={() => toggleNode()}
-      />
+        />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"></svg>
       <rect
         x={33}
         y={2}
-        width="160"
+        width={getWidthOfText(nodeDatum.name)+getWidthOfText(nodeDatum.name)*1.3}
+        // width="160"
         height="60"
         rx="18"
         ry="18"
         fill="#FEFFDD"
         className="stroke-current stroke-[0.5px]"
-      />
+        />
       <text
-        x={55}
+        x={45}
         y={22}
         fill="#000000"
         className="font-IBM-Plex-Mono font-medium text-[14px] stroke-[0.8px]"
-      >
+        >
         {nodeDatum.name}
       </text>
       <rect
@@ -88,7 +103,7 @@ const renderCustomNode = ({ nodeDatum, toggleNode }) => {
         ry="9"
         fill="#CCFFE0"
         className="stroke-none"
-      />
+        />
       <text
         x={46}
         y={47}
@@ -96,23 +111,48 @@ const renderCustomNode = ({ nodeDatum, toggleNode }) => {
         height="20"
         fill="#3C8B5C"
         className="font-IBM-Plex-Mono font-medium text-[11px] stroke-none text-center"
-      >
-        {nodeDatum.attributes.id}
+        >
+        {nodeDatum.id}
       </text>
     </g>
   );
 };
 
 export default function TreePage() {
+  const [chartData, setChartData] = useState({});
+  useEffect(() => {
+    axios
+      .get(
+        "https://ancestree-backend.onrender.com/api/v1/family/tree" ,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then( async (response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          
+            setChartData(response.data.tree);
+          
+        }
+      })
+      .catch((error) => {
+        console.error("Error :", error);
+        // Handle error response if needed
+      });
+  }, []);
   return (
     <div id="treeWrapper" className="h-screen border-line">
       <Tree
+      collapsible={true}
         translate={{ x: 525, y: 200 }}
-        data={orgChart}
+        data={chartData}
         pathFunc={"diagonal"}
         orientation="vertical"
         separation={{ siblings: 2, nonSiblings: 2 }}
-        initialDepth={0}
+        initialDepth={99}
         enableLegacyTransitions={true}
         renderCustomNodeElement={(rd3tProps) => renderCustomNode(rd3tProps)}
       />

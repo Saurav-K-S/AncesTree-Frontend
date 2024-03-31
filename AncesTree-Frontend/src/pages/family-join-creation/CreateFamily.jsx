@@ -4,6 +4,11 @@ import TextField from "../../components/TextField";
 import SubmitButton from "../../components/SubmitButton";
 
 export default function CreateFamily(props) {
+  function cont() {
+    props.indexFunc(4)
+    
+  }
+
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
       <Heading head={"Welcome " + props.name} />
@@ -16,8 +21,8 @@ export default function CreateFamily(props) {
         <div className="text-[17px] font-semibold ml-6  font-IBM-Plex-Mono ">
           Create a Family
         </div>
-        <TextField head="Please enter the name of your family" value="text" />
-        <SubmitButton action="Continue" />
+        <TextField head="Please enter the name of your family" value="text" func={props.familyNameFunc}/>
+        <SubmitButton action="Continue" func={cont}/>
       </div>
     </div>
   );

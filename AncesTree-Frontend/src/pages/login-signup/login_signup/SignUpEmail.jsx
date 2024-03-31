@@ -15,19 +15,20 @@ export default function SignUpEmail(props) {
 
 
   const nameInputRef = useRef(null);
-  const emailInputRef = useRef(null);
+  const numberInputRef = useRef(null);
   const passwordInputRef = useRef(null);
   const passwordAgainInputRef = useRef(null);
 
   function Continue() {
     if (psswdcheck) {
+      localStorage.setItem('name', props.name)
       props.indexFunc(1);
     } else {
       setAlertMsg("Invalid Password!"), setShowAlert(true);
-      props.nameRef.current.value = "";
-      props.emailRef.current.value = "";
-      props.passwordRef.current.value = "";
-      props.passwordAgainRef.current.value = "";
+      nameInputRef.current.value = "";
+      numberInputRef.current.value = "";
+      passwordInputRef.current.value = "";
+      passwordAgainInputRef.current.value = "";
     }
   }
   const closeAlert = () => {
@@ -39,10 +40,10 @@ export default function SignUpEmail(props) {
         <Heading head="SignUp" />
         <TextField head="Name" func={props.nameFunc} inputRef={nameInputRef} />
         <TextField
-          head="Email"
-          func={props.emailFunc}
-          inputRef={emailInputRef}
-          type="email"
+          head="Number"
+          func={props.numberFunc}
+          inputRef={numberInputRef}
+          type="number"
         />
         <TextField
           head="Choose Password"

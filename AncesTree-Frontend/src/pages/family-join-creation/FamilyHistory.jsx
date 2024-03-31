@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Heading from "../../components/Heading";
 import SubmitButton from "../../components/SubmitButton";
+import axios from "axios";
 
 export default function FamilyHistory(props) {
+  const [history, setHistory] = useState("");
+
+  function cont() {
+    axios.post("https://ancestree-backend.onrender.com/api/v1/family/create",{name:props.familyName,
+    history:history},{
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    }).then(function (response) {
+      if (response.data.success) {
+        console.log(response)
+        localStorage.setItem('token', response.data.token)
+        props.indexFunc(5)
+      }
+    })
+    .catch(function (error) {
+      console.log(error)
+    });
+    
+  }
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
       <Heading head={"Welcome " + props.name} />
@@ -28,10 +47,11 @@ export default function FamilyHistory(props) {
 
               className="resize-none bg-[#FEFFDD] border-[0.1px] border-black border-dashed rounded-[18px] w-[380px]  h-[245px] p-3 mt-[9px] flex justify-start items-start"
               type="text"
+              onChange={ (e) => setHistory(e.target.value)}
             />
           </div>
         </div>
-        <SubmitButton action="Continue" />
+        <SubmitButton action="Continue" func={cont}/>
       </div>
     </div>
   );

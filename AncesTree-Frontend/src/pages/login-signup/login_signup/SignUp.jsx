@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import SignUpEmail from "./SignUpEmail";
 import SignUpNumber from "./SignUpNumber";
+import Login from "./Login";
 import OTP from "./OTP";
 
 export default function SignUp() {
@@ -17,9 +18,10 @@ export default function SignUp() {
     case 0:
       return (
         <SignUpEmail
+        name={name}
           indexFunc={setIndex}
           nameFunc={setName}
-          emailFunc={setEmail}
+          numberFunc={setNumber}
           passwordFunc={setPassord}
           passwordValue={password}
         />
@@ -28,8 +30,8 @@ export default function SignUp() {
       return (
         <SignUpNumber
           indexFunc={setIndex}
-          numberFunc={setNumber}
-          numberValue={number}
+          emailFunc={setEmail}
+          emailValue={email}
           otpFunc={setOtpOG}
         />
       );
@@ -42,6 +44,12 @@ export default function SignUp() {
           emailValue={email}
           passwordValue={password}
           numberValue={number}
+        />
+      );
+    case 3:
+      return (
+        <Login
+          newUser={true}
         />
       );
     default:

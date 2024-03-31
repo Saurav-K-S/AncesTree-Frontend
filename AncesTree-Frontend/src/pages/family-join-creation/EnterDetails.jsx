@@ -5,7 +5,6 @@ import SubmitButton from "../../components/SubmitButton";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import { ThemeProvider } from "@material-tailwind/react";
 
 export default function EnterDetails(props) {
   
