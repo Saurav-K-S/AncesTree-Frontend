@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'hover-element': "url('src/assets/hover_element.png')",
+        'hover-element': "url('public/assets/hover_element.png')",
       }
     },
     fontFamily: {

@@ -9,7 +9,7 @@ body{
     left: 0;
     right: 0;
     background-color: #FEFFDD; /* Change this to the desired background color */
-    background-image: url('src/assets/background.png'); /* Replace with your image path */
+    background-image: url('public/assets/background.png'); /* Replace with your image path */
     background-size: cover;
     background-attachment: fixed;
 }
