@@ -23,6 +23,8 @@ export default function HomePage() {
           setFamilyName(response.data.home.name);
           setFamilyHistory(response.data.home.history);
           setImageSRC(response.data.home.image)
+          localStorage.setItem('homeImage', response.data.home.image)
+
         }
       })
       .catch((error) => {
@@ -32,8 +34,8 @@ export default function HomePage() {
   }, []);
   return (
     <div className="h-screen flex flex-col pt-14 pl-16   text-[100px]">
-      <div className="w-auto h-[200px] mr-16 overflow-hidden rounded-[28px] flex justify-start items-start">
-        <img src={imageSRC} alt="IMAGE NOT FOUND!!!" />
+      <div className="w-auto h-[200px] mr-16 overflow-hidden text-[15px] font-IBM-Plex-Mono rounded-[28px] flex justify-start items-start">
+        <img src={imageSRC} alt="Not Found" />
       </div>
       <div className="flex justify-between items-center">
         <div>
