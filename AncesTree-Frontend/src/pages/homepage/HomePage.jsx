@@ -5,6 +5,7 @@ import { useEffect } from "react";
 export default function HomePage() {
   const [familyName, setFamilyName] = useState("");
   const [familyHistory, setFamilyHistory] = useState("");
+  const [imageSRC, setImageSRC] = useState("");
   const [todayEventList, setTodayEventList] = useState();
   const [eventList, setEventList] = useState();
   const date = new Date();
@@ -21,6 +22,7 @@ export default function HomePage() {
         if (response.data.success) {
           setFamilyName(response.data.home.name);
           setFamilyHistory(response.data.home.history);
+          setImageSRC(response.data.home.image)
         }
       })
       .catch((error) => {
@@ -31,7 +33,7 @@ export default function HomePage() {
   return (
     <div className="h-screen flex flex-col pt-14 pl-16   text-[100px]">
       <div className="w-auto h-[200px] mr-16 overflow-hidden rounded-[28px] flex justify-start items-start">
-        <img src="src\assets\family_photo.png" alt="IMAGE NOT FOUND!!!" />
+        <img src={imageSRC} alt="IMAGE NOT FOUND!!!" />
       </div>
       <div className="flex justify-between items-center">
         <div>
