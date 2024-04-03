@@ -34,7 +34,7 @@ export default function HomePage() {
   }, []);
   return (
     <div className="h-screen flex flex-col pt-14 pl-16   text-[100px]">
-      <div className="w-auto h-[200px] mr-16 overflow-hidden text-[15px] font-IBM-Plex-Mono rounded-[28px] flex justify-start items-start">
+      <div className="w-auto h-[200px] mr-16 overflow-hidden text-[15px] font-IBM-Plex-Mono rounded-[28px] flex justify-start items-center">
         <img src={imageSRC} alt="Not Found" />
       </div>
       <div className="flex justify-between items-center">

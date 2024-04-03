@@ -4,11 +4,14 @@ import { CiCirclePlus } from "react-icons/ci";
 export default function EventPage() {
   const [eventData, seteventData] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [showDeleteConf, setShowDeleteConf] = useState(false);
   const [eventName, setEventName] = useState("");
   const [eventPlace, setEventPlace] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
   const [eventDetails, setEventDetails] = useState("");
+  const [deleteId, setDeleteId] = useState("");
+
   const date = new Date();
 
   useEffect(() => {
@@ -68,6 +71,25 @@ export default function EventPage() {
       });
   };
 
+  function deleteEvent(id) {
+    axios
+      .delete(
+        "https://ancestree-backend.onrender.com/api/v1/family/event/delete/" +
+          id,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+        // Close the form
+        setShowDeleteConf(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   return (
     <div className="w-full h-screen ml-8 mt-44">
       <div className="hehe w-[90%] h-[70%] grid grid-cols-2  gap-4 gap-y-11 overflow-y-scroll scrollbar-none">
@@ -84,21 +106,60 @@ export default function EventPage() {
               <div className="font-IBM-Plex-Mono bg-[#676767] text-[11px] text-[#676767] bg-opacity-[8%] px-4 rounded-md py-2">
                 {boxData.place}
               </div>
+              <div
+                className="font-IBM-Plex-Mono bg-black text-[11px] text-white px-4 rounded-md py-2"
+                onClick={() => {
+                  setShowDeleteConf(true),
+                    setDeleteId(boxData._id),
+                    console.log(deleteId);
+                }}
+              >
+                Delete Event?
+              </div>
             </div>
-            <div className="font-IBM-Plex-Mono text-[#676767] px-7 pt-5">{boxData.date}</div>
-            <div className="font-IBM-Plex-Mono px-7 pt-5">{boxData.details}</div>
+            <div className="font-IBM-Plex-Mono text-[#676767] px-7 pt-5">
+              {boxData.date}
+            </div>
+            <div className="font-IBM-Plex-Mono px-7 pt-5">
+              {boxData.details}
+            </div>
           </div>
         ))}
         <div
-          className="w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-black  cursor-pointer"
+          className="w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-[#676767]  cursor-pointer"
           onClick={handleAddEventClick}
         >
-          <CiCirclePlus size={100} color="#676767"/>
+          <CiCirclePlus size={100} color="#676767" />
           <div className="font-IBM-Plex-Mono text-[18px] font-semibold text-[#676767]">
             Add Event
           </div>
         </div>
       </div>
+      {showDeleteConf && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+          <form
+            className="bg-[#FFEEB2] p-8 rounded-lg shadow-lg"
+          >
+            <label className="block mb-4 font-IBM-Plex-Mono font-semibold">
+              Are you sure you want to delete the event?
+              <div className="flex justify-between mt-3">
+                <div
+                  className="bg-red text-black px-4 py-2 rounded hover:bg-[#FFE072] border border-black cursor-pointer"
+                  onClick={() => {deleteEvent(deleteId)}}
+                >
+                  Delete
+                </div>
+                <div
+                  className="bg-black text-white px-4 py-2 rounded hover:bg-red-600 cursor-pointer"
+                  onClick={() => setShowDeleteConf(false)}
+                >
+                  Close
+                </div>
+              </div>
+            </label>
+          </form>
+        </div>
+      )}
       {showForm && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
           <form
@@ -155,12 +216,20 @@ export default function EventPage() {
                 required
               />
             </label>
-            <button
-              type="submit"
-              className="bg-[#FEFFDD] font-semibold text-black font-IBM-Plex-Mono px-4 py-2 rounded-md"
-            >
-              Submit
-            </button>
+            <div className="flex justify-between">
+              <button
+                type="submit"
+                className="bg-[#FFE072] text-black px-4 py-2 rounded hover:bg-[#FFE072]"
+              >
+                Submit
+              </button>
+              <button
+                onClick={() => setShowForm(false)}
+                className="bg-black text-white px-4 py-2 rounded hover:bg-red-600"
+              >
+                Close
+              </button>
+            </div>
           </form>
         </div>
       )}

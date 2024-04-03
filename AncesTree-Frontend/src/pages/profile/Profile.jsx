@@ -29,10 +29,10 @@ export default function Profile() {
   }, []);
   return (
     <div className="h-screen flex flex-col pt-14 pl-16   text-[100px]">
-      <div className="w-auto h-[200px] mr-16 overflow-hidden rounded-[28px] text-[15px] font-IBM-Plex-Mono flex justify-start items-start">
+      <div className="w-auto h-[200px] mr-16 overflow-hidden rounded-[28px] text-[15px] font-IBM-Plex-Mono flex justify-start items-center">
         <img src={localStorage.getItem("homeImage")} alt="Not Found" />
       </div>
-      <div className="w-full flex flex-row justify-between items-center">
+      <div className="mt-10 w-full flex flex-row justify-between items-center">
         <div>
           <div className="w-auto font-semibold text-[32px] font-IBM-Plex-Mono">
             {name}

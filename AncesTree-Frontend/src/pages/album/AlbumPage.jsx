@@ -70,11 +70,11 @@ export default function AlbumPage() {
           </div>
         ))}
         <div
-          className="w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-black  cursor-pointer"
+          className="w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-[#676767]  cursor-pointer"
           onClick={handleAddFolderClick}
         >
-          <CiCirclePlus size={100} />
-          <div className="font-IBM-Plex-Mono text-[18px] font-semibold">
+          <CiCirclePlus size={100} color="#676767"/>
+          <div className="font-IBM-Plex-Mono text-[18px] text-[#676767] font-semibold">
             Add Folder
           </div>
         </div>
@@ -92,7 +92,20 @@ export default function AlbumPage() {
                 required
               />
             </label>
-            <button type="submit" className="bg-[#FEFFDD] font-semibold text-black font-IBM-Plex-Mono px-4 py-2 rounded-md">Submit</button>
+            <div className="flex justify-between">
+              <button
+                type="submit"
+                className="bg-[#FFE072] text-black px-4 py-2 rounded hover:bg-[#FFE072]"
+              >
+                Submit
+              </button>
+              <button
+                onClick={() => setShowForm(false)}
+                className="bg-black text-white px-4 py-2 rounded hover:bg-red-600"
+              >
+                Close
+              </button>
+            </div>
           </form>
         </div>
       )}
