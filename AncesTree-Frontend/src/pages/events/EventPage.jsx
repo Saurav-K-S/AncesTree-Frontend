@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
+
 export default function EventPage() {
   const [eventData, seteventData] = useState([]);
   const [showForm, setShowForm] = useState(false);

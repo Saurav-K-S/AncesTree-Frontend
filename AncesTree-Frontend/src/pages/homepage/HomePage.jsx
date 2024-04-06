@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { CiEdit } from "react-icons/ci";
 
 export default function HomePage() {
   const [familyName, setFamilyName] = useState("");
@@ -31,16 +32,37 @@ export default function HomePage() {
         console.error("Error :", error);
         // Handle error response if needed
       });
+
+      axios.get("https://ancestree-backend.onrender.com/api/v1/family/event/notification/"+`${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      }).then(function (response) {
+        console.log(response);
+        setTodayEventList(response.data.todayEvents);
+        setEventList(response.data.events)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
   return (
+    
     <div className="h-screen flex flex-col pt-14 pl-16   text-[100px]">
+      
       <div className="w-auto h-[200px] mr-16 overflow-hidden text-[15px] font-IBM-Plex-Mono rounded-[28px] flex justify-start items-center">
         <img src={imageSRC} alt="Not Found" />
       </div>
       <div className="flex justify-between items-center">
         <div>
+          <div className="flex justify-between pr-10">
+
           <div className="w-[180px] h-auto font-semibold text-[44px] ml-[25px] font-IBM-Plex-Mono">
             {familyName}
+          </div>
+          <div className="h-min border-[0.2px] border-[#676767] rounded-md bg-[#676767] bg-opacity-30" onClick={()=>{}}>
+
+          <CiEdit  color="#676767" size={50}/>
+          </div>
           </div>
           <div className="w-min h-auto mt-6 flex justify-start items-center ">
             <div className="bg-hover-element w-[85px] h-[85px] absolute bg-cover -z-10"></div>
