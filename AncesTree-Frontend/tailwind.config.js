@@ -8,7 +8,10 @@ export default {
     extend: {
       backgroundImage: {
         'hover-element': "url('/assets/hover_element.png')",
-      }
+      },
+      aspectRatio: {
+        '4/3': '4 / 3',
+      },
     },
     fontFamily: {
       'IBM-Plex-Mono': ['"IBM Plex Mono"', 'mono-space'],

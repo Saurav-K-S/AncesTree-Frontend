@@ -93,7 +93,7 @@ export default function EventPage() {
 
   return (
     <div className="w-full h-screen ml-8 mt-44">
-      <div className="hehe w-[90%] h-[70%] grid grid-cols-2  gap-4 gap-y-11 overflow-y-scroll scrollbar-none">
+      <div className="w-[90%] h-[70%] grid grid-cols-2  gap-4 gap-y-11 overflow-y-scroll scrollbar-none">
         {eventData.map((boxData, index) => (
           <div
             key={index}
