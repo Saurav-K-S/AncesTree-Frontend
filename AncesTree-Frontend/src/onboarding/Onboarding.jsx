@@ -70,8 +70,8 @@ export default function Onboarding() {
       x: "random(90, 150, 3)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
       y: "random(190, 250, 5)",
 
-      rotation: "random(-15,15,2)",
-      ease: "ease.inOut(1,0.3)",
+      rotation: "random(-15,15,2)"%15,
+      ease: "ease.inOut(1,0.3)"     ,
       repeat: -3,
       repeatRefresh: true,
       duration: 1.5,
