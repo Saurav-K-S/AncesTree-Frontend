@@ -1,10 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Heading from "../../../components/Heading";
 import TextField from "../../../components/TextField";
 import SubmitButton from "../../../components/SubmitButton";
 import axios from "axios";
 import Alert from "../../../components/Alert";
+import gsap from "gsap";
 
 export default function Login(props) {
   const [password, setPassword] = useState("");
@@ -17,6 +18,14 @@ export default function Login(props) {
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
+
+  useEffect(() => {
+    
+    gsap.fromTo(".login",{
+      opacity:0,
+
+    },{opacity:1,duration:2})
+  }, []);
 
   function Submit() {
     axios
@@ -50,7 +59,7 @@ export default function Login(props) {
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
-      <div className="w-[410px] h-[550px]">
+      <div className="login w-[410px] h-[550px]">
         <Heading head="Login" />
 
         <TextField

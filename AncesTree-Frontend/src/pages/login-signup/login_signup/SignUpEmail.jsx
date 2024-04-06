@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Heading from "../../../components/Heading";
 import TextField from "../../../components/TextField";
 import SubmitButton from "../../../components/SubmitButton";
 import PasswordChecklist from "react-password-checklist";
 import Alert from "../../../components/Alert";
+import gsap from "gsap";
 
 var psswdcheck = false;
 
@@ -18,7 +19,13 @@ export default function SignUpEmail(props) {
   const numberInputRef = useRef(null);
   const passwordInputRef = useRef(null);
   const passwordAgainInputRef = useRef(null);
+  useEffect(() => {
+    
+    gsap.fromTo(".signup",{
+      opacity:0,
 
+    },{opacity:1,duration:2})
+  }, []);
   function Continue() {
     if (psswdcheck) {
       localStorage.setItem('name', props.name)
@@ -36,7 +43,7 @@ export default function SignUpEmail(props) {
   };
   return (
     <div className="w-full h-screen flex justify-center items-center">
-      <div className="w-[410px] h-[650px]">
+      <div className="signup w-[410px] h-[650px]">
         <Heading head="SignUp" />
         <TextField head="Name" func={props.nameFunc} inputRef={nameInputRef} />
         <TextField
