@@ -6,6 +6,7 @@ import BasePage from "./pages/basepage/BasePage";
 import ForgotPassword from "./pages/login-signup/forgotpassword/ForgotPassword";
 import FamilyJoinCreation from "./pages/family-join-creation/FamilyJoinCreation";
 import UploadPhotoOG from "./pages/family-join-creation/UploadPhotoOG";
+import Onboarding from "./onboarding/Onboarding";
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
         <Route path="/familyjoincreation" element={<FamilyJoinCreation/>} />   
         <Route path="/upload" element={<UploadPhotoOG/>} />   
         <Route path="/forgotpassword" element={<ForgotPassword/>} /> 
-        <Route path="/" element={<Login newUser={false}/>} />
+        <Route path="/" element={<Onboarding/>} /> 
+        <Route path="/login" element={<Login newUser={false}/>} />
         <Route path="/signup" element={<SignUp/>} />
       </Routes>
     </Router>

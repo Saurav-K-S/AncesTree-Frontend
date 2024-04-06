@@ -15,6 +15,7 @@ export default {
     },
     fontFamily: {
       'IBM-Plex-Mono': ['"IBM Plex Mono"', 'mono-space'],
+      'DM-Serif-Display': ['"DM Serif Display"', 'serif'],
     },
   },
   plugins: [require('tailwind-scrollbar')({ nocompatible: true }),],
