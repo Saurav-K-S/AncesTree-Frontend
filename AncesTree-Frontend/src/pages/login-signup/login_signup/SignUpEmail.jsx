@@ -43,7 +43,7 @@ export default function SignUpEmail(props) {
   };
   return (
     <div className="w-full h-screen flex justify-center items-center">
-      <div className="signup w-[410px] h-[650px]">
+      <div className="signup w-[410px] h-max ">
         <Heading head="SignUp" />
         <TextField head="Name" func={props.nameFunc} inputRef={nameInputRef} />
         <TextField
