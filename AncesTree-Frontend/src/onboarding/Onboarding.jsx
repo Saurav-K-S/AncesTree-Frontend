@@ -177,7 +177,7 @@ export default function Onboarding() {
     switch (deg) {
       case 343:
         setElementIndex(0);
-        gsap.fromTo(".select",{opacity:0.5}, {opacity:1, x: -10,y:8, ease: "ease.inOut(1,0.3)",duration:2 });
+        gsap.to(".select",{ x:-10,y:8, ease: "ease.inOut(1,0.3)",duration:2 });
         gsap.to(".main", {
           x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
           y: "random(190, 250)",
@@ -197,7 +197,7 @@ export default function Onboarding() {
         break;
       case 351:
         setElementIndex(1);
-        gsap.fromTo(".select",{opacity:0.5}, {opacity:1, x: 7,y:6, ease: "ease.inOut(1,0.3)" ,duration:2});
+        gsap.to(".select", {x: 7,y:6, ease: "ease.inOut(1,0.3)" ,duration:2});
 
         gsap.to(".main", {
           x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
@@ -218,7 +218,7 @@ export default function Onboarding() {
         break;
       case 360:
         setElementIndex(2);
-        gsap.fromTo(".select",{opacity:0.5}, {opacity:1, x: 9,y:-3, ease: "ease.inOut(1,0.3)" ,duration:2});
+        gsap.to(".select", {x: 9,y:-3, ease: "ease.inOut(1,0.3)" ,duration:2});
 
         gsap.to(".main", {
           x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
@@ -239,7 +239,7 @@ export default function Onboarding() {
         break;
       case 370:
         setElementIndex(3);
-        gsap.fromTo(".select",{opacity:0.5}, {opacity:1, x: 10,y:0, ease: "ease.inOut(1,0.3)" ,duration:2});
+        gsap.to(".select", {x: 10,y:0, ease: "ease.inOut(1,0.3)" ,duration:2});
 
         gsap.to(".main", {
           x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
