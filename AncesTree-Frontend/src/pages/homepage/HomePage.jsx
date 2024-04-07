@@ -110,9 +110,9 @@ export default function HomePage() {
         <img src={imageSRC} alt="Not Found" />
       </div>
       <div className="flex justify-between items-center">
-        <div>
+        <div className="w-[100%]">
           <div className="flex justify-between pr-10">
-            <div className="w-[180px] h-auto font-semibold text-[44px] ml-[25px] font-IBM-Plex-Mono leading-none">
+            <div className=" h-auto font-semibold text-[44px] ml-[25px] font-IBM-Plex-Mono leading-none">
               {familyName}
             </div>
             <div
@@ -122,7 +122,7 @@ export default function HomePage() {
               EDIT
             </div>
           </div>
-          <div className="w-full h-auto mt-6 flex justify-start items-center ">
+          <div className="w-full h-auto my-3  flex justify-start items-center ">
             <div className="bg-hover-element w-[85px] h-[85px] absolute bg-cover -z-10"></div>
             <div className="text-[28px] pl-[30px] font-IBM-Plex-Mono font-semibold text-black">
               History
@@ -132,7 +132,7 @@ export default function HomePage() {
             {familyHistory}
           </div>
         </div>
-        <div className="min-w-[295px] ml-10 h-[70%] mr-16  border-dashed border-black border-[0.6px] rounded-[18px] flex flex-col justify-start items-center">
+        <div className="w-[20%] ml-10 h-[70%] mr-16  border-dashed border-black border-[0.6px] rounded-[18px] flex flex-col px-10 justify-start items-center">
           <div className="w-[190px] h-[60px] text-[24px] font-IBM-Plex-Mono font-semibold mt-6">
             Notifications
           </div>

@@ -41,7 +41,7 @@ export default function UploadPhotoOG(props) {
       )
       .then((response) => {
         if (response.data.success) {
-          navigate("/");
+          navigate("/basepage");
         }
         console.log("image uploaded: ", response.data);
       })

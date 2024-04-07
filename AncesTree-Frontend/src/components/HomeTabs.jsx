@@ -8,8 +8,8 @@ export default function HomeTabs({ name, svg, index, tabClick, active }) {
     <div
       className={
         active == 1
-          ? "w-[110px] h-[110px] mt-6 border-black border-[0.6px] border-dashed flex flex-col justify-center items-center rounded-[18px] bg-[#FFEEB2] transition-all ease-in-out"
-          : "w-[110px] h-[85px] mt-6 border-black border-[0.6px] border-dashed flex flex-col justify-center items-center rounded-[18px] transition-all ease-in-out"
+          ? "clickable w-[110px] h-[110px] mt-6 border-black border-[0.6px] border-dashed flex flex-col justify-center items-center rounded-[18px] bg-[#FFEEB2] transition-all ease-in-out"
+          : "clickable w-[110px] h-[85px] mt-6 border-black border-[0.6px] border-dashed flex flex-col justify-center items-center rounded-[18px] transition-all ease-in-out"
       }
       onClick={handleTabClick}
     >

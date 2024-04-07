@@ -71,7 +71,7 @@ export default function Photos() {
       });
   }
   return (
-    <div className="h-screen w-screen grid grid-cols-3 gap-x-5 grid-rows-3 p-10">
+    <div className="h-screen w-screen grid grid-cols-3 gap-x-5 gap-y-5 grid-rows-3 p-10 overflow-y-scroll scrollbar-none  ">
       {showImage && (
         <div
           className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center"

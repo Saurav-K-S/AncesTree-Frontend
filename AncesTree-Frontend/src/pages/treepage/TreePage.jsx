@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import { format, differenceInYears } from "date-fns";
+import TextField from "../../components/TextField";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -162,6 +163,7 @@ export default function TreePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [showCard, setShowCard] = useState(false);
+  const [memberSearch, setMemberSearch] = useState();
   const [memberDetails, setMemberDetails] = useState({
     self: true,
     name: "",
@@ -174,7 +176,7 @@ export default function TreePage() {
     father: "",
     occupation: "",
     address: "",
-    birthOrder: null,
+    birthOrder: 0,
     gender: 1,
     noOfChildren: 0,
   });
@@ -209,6 +211,7 @@ export default function TreePage() {
   }, []);
 
   function submitMember() {
+    console.log(memberDetails.noOfChildren);
     axios
       .post(
         "https://ancestree-backend.onrender.com/api/v1/member/create",
@@ -229,7 +232,7 @@ export default function TreePage() {
         console.error("Error:", error);
       });
   }
-  function editMember(memberDetails, id,setIsEditOpen) {
+  function editMember(memberDetails, id, setIsEditOpen) {
     axios
       .put(
         "https://ancestree-backend.onrender.com/api/v1/member/edit",
@@ -259,8 +262,76 @@ export default function TreePage() {
         console.error("Error:", error);
       });
   }
+  function searchMember() {
+    console.log("HIIIIII");
+    axios
+      .get(
+        "https://ancestree-backend.onrender.com/api/v1/member/search/" +
+          memberSearch,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+        // Close the form
+        setChartData(response.data.memberPath);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  function refreshTree() {
+    axios
+      .get("https://ancestree-backend.onrender.com/api/v1/family/tree", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then(async (response) => {
+        console.log(response.data);
+        if (response.data.success) {
+          setChartData(response.data.tree);
+        }
+      })
+      .catch((error) => {
+        console.error("Error :", error);
+        // Handle error response if needed
+      });
+  }
   return (
     <div id="treeWrapper" className="h-screen border-line">
+      <div className="fixed top-[5%] right-[3%] flex items-end justify-end">
+        <div className="mt-[20px]">
+          <div className="w-[425px] text-[14px] font-IBM-Plex-Mono">
+            Input ID
+          </div>
+          <div>
+            <input
+              onChange={(e) => setMemberSearch(e.target.value)}
+              className="bg-[#FEFFDD] cursor-none border-[0.1px] border-black border-dashed rounded-[18px] w-[380px]  h-[52px] p-3 mt-[9px]"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl"
+          onClick={() => {
+            searchMember();
+          }}
+        >
+          Search
+        </div>
+        <div
+          className="w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl"
+          onClick={() => {
+            refreshTree();
+          }}
+        >
+          Refresh
+        </div>
+      </div>
       <Tree
         collapsible={false}
         translate={{ x: 525, y: 200 }}
@@ -707,7 +778,9 @@ export default function TreePage() {
             </label>
             <div className="flex justify-between">
               <button
-                onClick={() => editMember(memberDetails, displayMember.id,setIsEditOpen)}
+                onClick={() =>
+                  editMember(memberDetails, displayMember.id, setIsEditOpen)
+                }
                 className="bg-[#FFE072] text-black px-4 py-2 rounded hover:bg-[#FFE072]"
               >
                 Submit

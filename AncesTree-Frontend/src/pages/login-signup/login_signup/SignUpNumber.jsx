@@ -9,6 +9,7 @@ export default function SignUpNumber(props) {
   const [alertMsg, setAlertMsg] = useState("");
 
   function Submit() {
+    console.log("HIIII")
     axios
       .post("https://ancestree-backend.onrender.com/api/v1/user/register", {
         email: props.emailValue,

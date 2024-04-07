@@ -139,30 +139,24 @@ export default function Onboarding() {
   ];
   const renderElement = [
     <div>
-      <div className="mr-24 mt-5 font-IBM-Plex-Mono font-semibold -ml-28 mb-10 leading-none tracking-widest">
+      <div className=" mt-5 font-IBM-Plex-Mono font-semibold -ml-28 mb-10 leading-none tracking-widest">
         Connect with
-        <br />
         your <span className="font-DM-Serif-Display italic">past</span>
       </div>
     </div>,
     <div>
-      <div className="mr-16  font-IBM-Plex-Mono font-semibold leading-none tracking-widest">
-        Get in touch
-        <br />
-        with your <span className="font-DM-Serif-Display italic">roots</span>
+      <div className="-ml-32  font-IBM-Plex-Mono font-semibold leading-none tracking-widest">
+        Get in touch with your <span className="font-DM-Serif-Display italic">roots</span>
       </div>
     </div>,
     <div>
       <div className="mr-20 mt-7 font-IBM-Plex-Mono font-semibold -ml-28 mb-10 leading-none tracking-wide">
-        Get family <br /> event{" "}
-        <span className="font-DM-Serif-Display italic">reminders</span>
+        Get family event{" "}<span className="font-DM-Serif-Display italic">reminders</span>
       </div>
     </div>,
     <div>
       <div className="mr-20 mb-12 font-IBM-Plex-Mono font-semibold -ml-32 mt-5 leading-none tracking-wide">
-        Discover your
-        <br />
-        family’s <span className="font-DM-Serif-Display italic">story</span>
+        Discover your family’s <span className="font-DM-Serif-Display italic">story</span>
       </div>
     </div>,
   ];
@@ -345,7 +339,7 @@ export default function Onboarding() {
           </svg>
           AncesTree
         </div>
-        <div className="flex justify-between w-[15%]">
+        <div className="flex justify-around w-[25%]">
           <div
             className="clickable border-[0.2px]  rounded-3xl border-black p-3 hover:bg-[#FFDC5F] duration-500"
             onClick={() => {
@@ -402,25 +396,25 @@ export default function Onboarding() {
         </div>
       </div>
 
-      <div className="main fixed top-0 left-4 w-[725px] h-[230px]">
-        <div className="absolute w-[690px] h-[180px] z-50 bg-[#FFDC5F] border-[1px] flex justify-end items-center  border-black rounded-[73px] text-[60px]">
+      <div className="main fixed top-[5%] left-[2%] w-[45%] h-[25%]">
+        <div className="absolute w-[100%] h-[100%] z-50 bg-[#FFDC5F] border-[1px] flex justify-center pl-[30%] items-center  border-black rounded-[73px] text-[60px]">
           {renderElement[elementIndex]}
         </div>
-        <div className="absolute w-[690px] h-[180px] z-40 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[10px] -ml-[7px]"></div>
-        <div className="absolute w-[690px] h-[180px] z-30 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[20px] -ml-[14px]"></div>
-        <div className="absolute w-[690px] h-[180px] z-20 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[30px] -ml-[21px]"></div>
-        <div className="absolute w-[690px] h-[180px] z-10 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[40px] -ml-[28px]"></div>
-        <div className="absolute w-[690px] h-[180px] z-0 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[50px] -ml-[35px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-40 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[10px] -ml-[7px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-30 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[20px] -ml-[14px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-20 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[30px] -ml-[21px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-10 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[40px] -ml-[28px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-0 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[50px] -ml-[35px]"></div>
       </div>
-      <div className="mainSVG  fixed top-0 right-4 w-[725px] h-[230px]">
-        <div className="absolute w-[314px] h-[180px] z-50 bg-[#FFDC5F] border-[1px] flex justify-center items-center  border-black rounded-[73px] text-[60px]">
+      <div className="mainSVG  fixed top-[10%] right-[15%] w-[18%] h-[25%]">
+        <div className="absolute w-[100%] h-[100%] z-50 bg-[#FFDC5F] border-[1px] flex justify-center items-center  border-black rounded-[73px] text-[60px]">
           {renderSVGElement[elementIndex]}
         </div>
-        <div className="absolute w-[314px] h-[180px] z-40 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[10px] ml-[7px]"></div>
-        <div className="absolute w-[314px] h-[180px] z-30 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[20px] ml-[14px]"></div>
-        <div className="absolute w-[314px] h-[180px] z-20 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[30px] ml-[21px]"></div>
-        <div className="absolute w-[314px] h-[180px] z-10 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[40px] ml-[28px]"></div>
-        <div className="absolute w-[314px] h-[180px] z-0 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[50px] ml-[35px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-40 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[10px] ml-[7px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-30 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[20px] ml-[14px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-20 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[30px] ml-[21px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-10 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[40px] ml-[28px]"></div>
+        <div className="absolute w-[100%] h-[100%] z-0 bg-[#FFDC5F] border-[1px] border-black rounded-[73px] mt-[50px] ml-[35px]"></div>
       </div>
     </div>
   );

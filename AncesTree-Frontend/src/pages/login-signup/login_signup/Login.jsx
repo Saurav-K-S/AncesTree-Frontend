@@ -66,7 +66,7 @@ export default function Login(props) {
 
         <TextField
           head="Phone number"
-          type="email"
+          type="number"
           func={setPhonenumber}
           inputRef={phoneInputRef}
         />
