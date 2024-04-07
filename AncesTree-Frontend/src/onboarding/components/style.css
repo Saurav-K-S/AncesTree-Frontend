@@ -66,25 +66,22 @@ html {
   font-size: 1.25rem;
   overflow-x: hidden;
 }
-.outlined-text {
+/* .outlined-text {
   -webkit-text-stroke-width: 0.1px;
   -webkit-text-stroke-color: black;
 
    color:transparent;
-  /* Hide the original text color */
+  
   @apply text-transparent;
 
-  /* Create dashed outline effect */
+  
   @apply text-[#feffdd];
-  @apply text-opacity-100; /* Initial opacity (transparent) */
+  @apply text-opacity-100; 
 
-  /* Dashed outline with 3px spacing between dashes */
-  /* text-shadow: 1px 1px 0 #FFDC5F, 2px 2px 0 #FFDC5F, 3px 3px 0 #FFDC5F,
+  text-shadow: 1px 1px 0 #FFDC5F, 2px 2px 0 #FFDC5F, 3px 3px 0 #FFDC5F,
     4px 4px 0 #FFDC5F, 5px 5px 0 #FFDC5F, 6px 6px 0 #FFDC5F, 7px 7px 0 #FFDC5F,
     8px 8px 0 #FFDC5F, 9px 9px 0 #FFDC5F, 10px 10px 0 #FFDC5F, 11px 11px 0 #FFDC5F,
     12px 12px 0 #FFDC5F, 13px 13px 0 #FFDC5F, 14px 14px 0 #FFDC5F, 15px 15px 0 #FFDC5F,
     16px 16px 0 #FFDC5F, 17px 17px 0 #FFDC5F, 18px 18px 0 #FFDC5F, 19px 19px 0 #FFDC5F,
-    20px 20px 0 #FFDC5F; */
-  text-shadow: 
     20px 20px 0 #FFDC5F;
-}
+} */

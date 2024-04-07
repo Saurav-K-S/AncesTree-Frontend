@@ -3,7 +3,7 @@ import "./style.css";
 const Circle = ({ deg, changeDeg }) => {
   return (
     <div
-      className="circle"
+      className="circle z-10"
       style={{ transform: `translate(-50%) rotate(-${deg}deg)` }}
     >
         <img src="./assets/circular_element.png" alt="" srcset="" />
