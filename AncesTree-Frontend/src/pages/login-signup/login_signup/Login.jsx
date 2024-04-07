@@ -20,11 +20,13 @@ export default function Login(props) {
   const [alertMsg, setAlertMsg] = useState("");
 
   useEffect(() => {
-    
-    gsap.fromTo(".login",{
-      opacity:0,
-
-    },{opacity:1,duration:2})
+    gsap.fromTo(
+      ".login",
+      {
+        opacity: 0,
+      },
+      { opacity: 1, duration: 2 }
+    );
   }, []);
 
   function Submit() {
@@ -35,7 +37,7 @@ export default function Login(props) {
       })
       .then(function (response) {
         if (response.data.success) {
-          localStorage.setItem('token', response.data.token)
+          localStorage.setItem("token", response.data.token);
           if (props.newUser) {
             navigate("/familyjoincreation");
           } else {

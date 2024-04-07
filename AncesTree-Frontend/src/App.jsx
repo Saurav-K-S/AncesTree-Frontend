@@ -7,6 +7,7 @@ import ForgotPassword from "./pages/login-signup/forgotpassword/ForgotPassword";
 import FamilyJoinCreation from "./pages/family-join-creation/FamilyJoinCreation";
 import UploadPhotoOG from "./pages/family-join-creation/UploadPhotoOG";
 import Onboarding from "./onboarding/Onboarding";
+import Photos from "./pages/album/Photos";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/upload" element={<UploadPhotoOG/>} />   
         <Route path="/forgotpassword" element={<ForgotPassword/>} /> 
         <Route path="/" element={<Onboarding/>} /> 
+        <Route path="/photos/:id" element={<Photos/>} /> 
         <Route path="/login" element={<Login newUser={false}/>} />
         <Route path="/signup" element={<SignUp/>} />
       </Routes>

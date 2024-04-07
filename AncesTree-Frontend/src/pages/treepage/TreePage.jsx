@@ -108,7 +108,7 @@ const renderCustomNode = (
     <g id={nodeDatum.name + "_id"} className="stroke-[1px]">
       <circle
         r={35}
-        className="fill-[#FFEEB2] stroke-black stroke-[2px]"
+        className="fill-[#FFEEB2] stroke-black stroke-[0.2px]"
         // onClick={() => toggleNode()}
         onClick={renderDiv}
         // onDoubleClick={ }

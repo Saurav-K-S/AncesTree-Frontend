@@ -23,7 +23,7 @@ export default function AlbumPage() {
 
   const handleBoxClick = (id) => {
     const newWindow = window.open(
-      "https://drive.google.com/drive/folders/" + id + "?usp=drive_link",
+      "http://localhost:5173/photos/"+id,
       "_blank",
       "noopener,noreferrer"
     );

@@ -173,25 +173,90 @@ export default function Onboarding() {
   const ref4 = useRef(null);
 
   function handleAnimation(deg) {
+    
     switch (deg) {
       case 343:
         setElementIndex(0);
         gsap.fromTo(".select",{opacity:0.5}, {opacity:1, x: -10,y:8, ease: "ease.inOut(1,0.3)",duration:2 });
+        gsap.to(".main", {
+          x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
+          y: "random(190, 250)",
+      
+          rotation: "random(-15,15)",
+          ease: "ease.inOut(1,0.3)",
+          duration: 1.5,
+        });
+        gsap.to(".mainSVG", {
+          x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
+          y: "random(190, 250)",
+      
+          rotation: "random(-15,15)",
+          ease: "ease.inOut(1,0.3)",
+          duration: 1.5,
+        });
         break;
       case 351:
         setElementIndex(1);
         gsap.fromTo(".select",{opacity:0.5}, {opacity:1, x: 7,y:6, ease: "ease.inOut(1,0.3)" ,duration:2});
 
+        gsap.to(".main", {
+          x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
+          y: "random(190, 250)",
+      
+          rotation: "random(-15,15)",
+          ease: "ease.inOut(1,0.3)",
+          duration: 1.5,
+        });
+        gsap.to(".mainSVG", {
+          x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
+          y: "random(190, 250)",
+      
+          rotation: "random(-15,15)",
+          ease: "ease.inOut(1,0.3)",
+          duration: 1.5,
+        });
         break;
       case 360:
         setElementIndex(2);
         gsap.fromTo(".select",{opacity:0.5}, {opacity:1, x: 9,y:-3, ease: "ease.inOut(1,0.3)" ,duration:2});
 
+        gsap.to(".main", {
+          x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
+          y: "random(190, 250)",
+      
+          rotation: "random(-15,15)",
+          ease: "ease.inOut(1,0.3)",
+          duration: 1.5,
+        });
+        gsap.to(".mainSVG", {
+          x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
+          y: "random(190, 250)",
+      
+          rotation: "random(-15,15)",
+          ease: "ease.inOut(1,0.3)",
+          duration: 1.5,
+        });
         break;
       case 370:
         setElementIndex(3);
         gsap.fromTo(".select",{opacity:0.5}, {opacity:1, x: 10,y:0, ease: "ease.inOut(1,0.3)" ,duration:2});
 
+        gsap.to(".main", {
+          x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
+          y: "random(190, 250)",
+      
+          rotation: "random(-15,15)",
+          ease: "ease.inOut(1,0.3)",
+          duration: 1.5,
+        });
+        gsap.to(".mainSVG", {
+          x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
+          y: "random(190, 250)",
+      
+          rotation: "random(-15,15)",
+          ease: "ease.inOut(1,0.3)",
+          duration: 1.5,
+        });
         break;
 
       default:
@@ -201,26 +266,6 @@ export default function Onboarding() {
   }
 
   useEffect(() => {
-    gsap.to(".main", {
-      x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
-      y: "random(190, 250)",
-
-      rotation: "random(-15,15)",
-      ease: "ease.inOut(1,0.3)",
-      repeat: -1,
-      repeatRefresh: true,
-      duration: 1.5,
-    });
-    gsap.to(".mainSVG", {
-      x: "random(90, 150)", //chooses a random number between -20 and 20 for each target, rounding to the closest 5!
-      y: "random(190, 250)",
-
-      rotation: "random(-15,15)",
-      ease: "ease.inOut(1,0.3)",
-      repeat: -3,
-      repeatRefresh: true,
-      duration: 1.5,
-    });
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
         const { id } = entry.target.dataset;

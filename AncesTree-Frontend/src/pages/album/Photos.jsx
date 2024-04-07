@@ -1,35 +1,31 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {  CiPhone } from "react-icons/ci";
+import { useParams } from "react-router-dom";
 
-export default function Profile() {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [number, setNumber] = useState();
-  const [id, setId] = useState();
-  const [imageEdit, setImageEdit] = useState(false);
+export default function Photos() {
+  const { id } = useParams();
+  const [photosData, setPhotosData] = useState([]);
+  const [showImageUpload, setShowImageUpload] = useState(false);
+  const [showImage, setShowImage] = useState(false);
   const [uploaded, setUploaded] = useState(false);
   const [file, setFile] = useState();
   const [viewFile, setViewFile] = useState();
+  const [imageSRC, setImageSRC] = useState();
   useEffect(() => {
+    console.log(id);
     axios
-      .get("https://ancestree-backend.onrender.com/api/v1/user/view", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        if (response.data.success) {
-          setName(response.data.user.name);
-          setEmail(response.data.user.email);
-          setNumber(response.data.user.mobileNumber);
-          setId(response.data.user.__v);
+      .get(
+        "https://ancestree-backend.onrender.com/api/v1/family/album/view/" + id,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
+      )
+      .then(function (response) {
+        console.log(response);
+        setPhotosData(response.data.albumsFiles);
       })
-      .catch((error) => {
-        console.error("Error :", error);
-        // Handle error response if needed
+      .catch(function (error) {
+        console.log(error);
       });
   }, []);
   function onChange(e) {
@@ -49,11 +45,12 @@ export default function Profile() {
     const blobToFile = new File([blob], "image1.png", { type: blob.type });
     console.log(blobToFile);
     const formData = new FormData();
-    formData.append("image", blobToFile);
+    formData.append("files", blobToFile);
     console.log(formData);
     axios
       .post(
-        "https://ancestree-backend.onrender.com/api/v1/family/upload",
+        "https://ancestree-backend.onrender.com/api/v1/family/album/upload/" +
+          id,
         formData,
         {
           headers: {
@@ -64,7 +61,7 @@ export default function Profile() {
       )
       .then((response) => {
         if (response.data.success) {
-          setImageEdit(false);
+          setShowImageUpload(false);
         }
         console.log("image uploaded: ", response.data);
       })
@@ -74,8 +71,18 @@ export default function Profile() {
       });
   }
   return (
-    <div className="h-screen flex flex-col pt-14 pl-16">
-      {imageEdit && (
+    <div className="h-screen w-screen grid grid-cols-3 gap-x-5 grid-rows-3 p-10">
+      {showImage && (
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center"
+          onClick={() => setShowImage(false)}
+        >
+          <div className="h-[90%] w-max overflow-clip rounded-lg shadow-lg flex justify-center pointer-events-none">
+            <img src={imageSRC} alt="" />
+          </div>
+        </div>
+      )}
+      {showImageUpload && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
           <form className="bg-[#FFEEB2] p-8 rounded-lg shadow-lg">
             <label className="block mb-4 font-IBM-Plex-Mono font-semibold">
@@ -129,29 +136,30 @@ export default function Profile() {
                         : " -z-2 absolute w-[375px] h-[185px] hidden"
                     }
                   >
-                    <img 
-                    src={viewFile}
-                    // src="https://drive.google.com/thumbnail?id=1gve52txpLoVqQS7zHhEzMNHkIQCHFc4i&sz=w1000"
-                     />
+                    <img
+                      src={viewFile}
+                      // src="https://drive.google.com/thumbnail?id=1gve52txpLoVqQS7zHhEzMNHkIQCHFc4i&sz=w1000"
+                    />
                   </div>
                 </div>
               </div>
             </label>
             <div className="flex justify-between mt-10">
-            <div className={uploaded ? "block" : "hidden"}>
-              <div
-                className="clickable bg-red text-black px-4 py-2 rounded hover:bg-[#FFE072] border border-black cursor-pointer"
-                onClick={() => {
-                  onContinue();
-                }}
-              >
-                Submit
+              <div className={uploaded ? "block" : "hidden"}>
+                <div
+                  className="clickable bg-red text-black px-4 py-2 rounded hover:bg-[#FFE072] border border-black cursor-pointer"
+                  onClick={() => {
+                    onContinue();
+                  }}
+                >
+                  Submit
+                </div>
               </div>
-              
-            </div>
               <div
                 className="clickable bg-black text-white px-4 py-2 rounded hover:bg-red-600 cursor-pointer"
-                onClick={() => {onRemove(),setImageEdit(false)}}
+                onClick={() => {
+                  onRemove(), setShowImageUpload(false);
+                }}
               >
                 Close
               </div>
@@ -175,38 +183,23 @@ export default function Profile() {
           </form>
         </div>
       )}
-      <div className="max-h-[250px] mr-16 overflow-hidden text-[15px] font-IBM-Plex-Mono rounded-[28px] flex justify-start items-center">
-        <img src={localStorage.getItem("homeImage")} alt="Not Found" />
+      {photosData.map((photosData, index) => (
         <div
-          className="fixed right-16  top-4 bg-[#FFEEB2] w-max  h-max px-3 rounded-md border border-black border-dashed text-[18px] font-IBM-Plex-Mono cursor-pointer"
+          className="clickable overflow-hidden h-auto w-auto rounded-3xl border-[1px] border-black flex justify-center items-center"
           onClick={() => {
-            setImageEdit(true);
+            setShowImage(true), setImageSRC(photosData);
           }}
         >
-          EDIT PHOTO
+          <img src={photosData} alt="" srcset="" />
         </div>
-      </div>
-      <div className="mt-3 w-full flex flex-row justify-between items-center">
-        <div>
-          <div className="w-auto font-semibold text-[32px] font-IBM-Plex-Mono">
-            {name}
-          </div>
-          <div className="text-[24px] font-IBM-Plex-Mono text-[#676767]  mt-11">
-            {email}
-          </div>
-        </div>
-        <div className="w-max flex flex-col justify-end items-end pr-14">
-          <div className="w-max h-auto text-[24px] font-IBM-Plex-Mono bg-[#CCFFE0] text-[#3C8B5C] rounded-[9px] px-5">
-            {id}
-          </div>
-
-          <div className="w-max text-[30px] flex items-center font-IBM-Plex-Mono  mt-11">
-            <div>
-              <CiPhone size={30} />
-            </div>
-            <div>{number}</div>
-          </div>
-        </div>
+      ))}
+      <div
+        className="clickable h-auto w-auto p-10 rounded-3xl border-[1px] border-black flex justify-center items-center"
+        onClick={() => {
+          setShowImageUpload(true);
+        }}
+      >
+        Upload Image
       </div>
     </div>
   );
