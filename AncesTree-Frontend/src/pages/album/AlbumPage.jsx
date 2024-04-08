@@ -23,7 +23,7 @@ export default function AlbumPage() {
 
   const handleBoxClick = (id) => {
     const newWindow = window.open(
-      "http://localhost:5173/photos/"+id,
+      "https://ancestree.vercel.app/photos/"+id,
       "_blank",
       "noopener,noreferrer"
     );
