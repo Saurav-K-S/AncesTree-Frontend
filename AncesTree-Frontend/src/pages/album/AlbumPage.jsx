@@ -23,7 +23,7 @@ const navigate = useNavigate();
   }, []);
 
   const handleBoxClick = (id) => {
-    navigate('/photos'+id)
+    navigate('/photos/'+id)
     // const newWindow = window.open(
     //   "https://ancestree.vercel.app/photos/"+id,
     //   "_blank",
