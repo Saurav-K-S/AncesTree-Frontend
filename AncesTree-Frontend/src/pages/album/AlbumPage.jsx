@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CiCirclePlus, CiFolderOn } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 export default function AlbumPage() {
   const [albumData, setAlbumData] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [folderName, setFolderName] = useState("");
-
+const navigate = useNavigate();
   useEffect(() => {
     axios
       .get("https://ancestree-backend.onrender.com/api/v1/family/album/view", {
@@ -22,11 +23,12 @@ export default function AlbumPage() {
   }, []);
 
   const handleBoxClick = (id) => {
-    const newWindow = window.open(
-      "https://ancestree.vercel.app/photos/"+id,
-      "_blank",
-      "noopener,noreferrer"
-    );
+    navigate('/photos'+id)
+    // const newWindow = window.open(
+    //   "https://ancestree.vercel.app/photos/"+id,
+    //   "_blank",
+    //   "noopener,noreferrer"
+    // );
   };
 
   const handleAddFolderClick = () => {

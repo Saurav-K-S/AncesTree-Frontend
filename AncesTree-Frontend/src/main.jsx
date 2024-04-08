@@ -7,7 +7,7 @@ import AnimatedCursor from "react-animated-cursor"
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-    {/* <AnimatedCursor 
+    <AnimatedCursor 
     innerStyle={{
       border: '1px solid black',
     }}
@@ -25,6 +25,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       '.clickable'
     ]}
     showSystemCursor={false}
-    /> */}
+    />
   </React.StrictMode>,
 )
