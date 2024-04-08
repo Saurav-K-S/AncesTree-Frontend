@@ -316,7 +316,7 @@ export default function TreePage() {
           </div>
         </div>
         <div
-          className="clickable w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl"
+          className="clickable w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl font-IBM-Plex-Mono"
           onClick={() => {
             searchMember();
           }}
@@ -324,7 +324,7 @@ export default function TreePage() {
           Search
         </div>
         <div
-          className="clickable w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl"
+          className="clickable w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl font-IBM-Plex-Mono"
           onClick={() => {
             refreshTree();
           }}
