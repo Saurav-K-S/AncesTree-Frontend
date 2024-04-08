@@ -59,7 +59,7 @@ const navigate = useNavigate();
         {albumData.map((boxData, index) => (
           <div
             key={index}
-            className="w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-black  cursor-pointer"
+            className="clickable w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-black  cursor-pointer"
             onClick={() => handleBoxClick(boxData.id)}
           >
             <CiFolderOn size={100} />
@@ -72,7 +72,7 @@ const navigate = useNavigate();
           </div>
         ))}
         <div
-          className="w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-[#676767]  cursor-pointer"
+          className="clickable w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-[#676767]  cursor-pointer"
           onClick={handleAddFolderClick}
         >
           <CiCirclePlus size={100} color="#676767"/>

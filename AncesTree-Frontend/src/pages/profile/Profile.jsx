@@ -178,7 +178,7 @@ export default function Profile() {
       <div className="max-h-[250px] mr-16 overflow-hidden text-[15px] font-IBM-Plex-Mono rounded-[28px] flex justify-start items-center">
         <img src={localStorage.getItem("homeImage")} alt="Not Found" />
         <div
-          className="fixed right-16  top-4 bg-[#FFEEB2] w-max  h-max px-3 rounded-md border border-black border-dashed text-[18px] font-IBM-Plex-Mono cursor-pointer"
+          className="clickable fixed right-16  top-4 bg-[#FFEEB2] w-max  h-max px-3 rounded-md border border-black border-dashed text-[18px] font-IBM-Plex-Mono cursor-pointer"
           onClick={() => {
             setImageEdit(true);
           }}

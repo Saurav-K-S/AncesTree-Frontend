@@ -116,7 +116,7 @@ export default function HomePage() {
               {familyName}
             </div>
             <div
-              className="h-min py-1 px-3 rounded-lg bg-[#67676733] font-IBM-Plex-Mono cursor-pointer"
+              className="clickable h-min py-1 px-3 rounded-lg bg-[#67676733] font-IBM-Plex-Mono cursor-pointer"
               onClick={() => setShowHomeEdit(true)}
             >
               EDIT

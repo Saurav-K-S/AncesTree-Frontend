@@ -108,7 +108,7 @@ export default function EventPage() {
                 {boxData.place}
               </div>
               <div
-                className="font-IBM-Plex-Mono bg-black text-[11px] text-white px-4 rounded-md py-2"
+                className="clickable font-IBM-Plex-Mono bg-black text-[11px] text-white px-4 rounded-md py-2"
                 onClick={() => {
                   setShowDeleteConf(true),
                     setDeleteId(boxData._id),
@@ -127,7 +127,7 @@ export default function EventPage() {
           </div>
         ))}
         <div
-          className="w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-[#676767]  cursor-pointer"
+          className="clickable w-[180px] h-[200px] flex flex-col justify-center items-center rounded-[12px] border-[0.1px] border-[#676767]  cursor-pointer"
           onClick={handleAddEventClick}
         >
           <CiCirclePlus size={100} color="#676767" />

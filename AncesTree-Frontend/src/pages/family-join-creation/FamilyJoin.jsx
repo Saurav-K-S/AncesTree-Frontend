@@ -17,7 +17,7 @@ export default function FamilyJoin(props) {
       if (response.data.success) {
         localStorage.setItem('token', response.data.token)
         
-        navigate('/')
+        navigate('/basepage')
       }
     })
     .catch(function (error) {

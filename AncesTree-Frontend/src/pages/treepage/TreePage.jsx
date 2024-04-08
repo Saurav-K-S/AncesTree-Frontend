@@ -316,7 +316,7 @@ export default function TreePage() {
           </div>
         </div>
         <div
-          className="w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl"
+          className="clickable w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl"
           onClick={() => {
             searchMember();
           }}
@@ -324,7 +324,7 @@ export default function TreePage() {
           Search
         </div>
         <div
-          className="w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl"
+          className="clickable w-max h-max py-3 px-3 border-[1px] border-black border-dashed rounded-xl"
           onClick={() => {
             refreshTree();
           }}
@@ -798,7 +798,7 @@ export default function TreePage() {
 
       <button
         onClick={() => setIsModalOpen(true)}
-        className="fixed text-[20px] px-10 bottom-4 right-4 bg-[#FFEEB2] font-semibold shadow-inner text-black font-IBM-Plex-Mono py-2 rounded-3xl hover:[#FFE072]"
+        className="clickable fixed text-[20px] px-10 bottom-4 right-4 bg-[#FFEEB2] font-semibold shadow-inner text-black font-IBM-Plex-Mono py-2 rounded-3xl hover:[#FFE072]"
       >
         Add Member
       </button>
