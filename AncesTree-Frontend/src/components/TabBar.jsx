@@ -100,6 +100,13 @@ export default function TabBar({ onTabChange, selectedIndex }) {
             </svg>
           }
         />
+<HomeTabs
+  index={5}
+  tabClick={handleTabClick}
+  active={selectedIndex == 5 ? 1 : 0}
+  name="Old Tree Page"
+  
+/>
 
         <HomeTabs
           active={selectedIndex == 1 ? 1 : 0}
@@ -202,13 +209,6 @@ export default function TabBar({ onTabChange, selectedIndex }) {
               />
             </svg>
           }
-        />
-        <HomeTabs
-          index={5}
-          tabClick={handleTabClick}
-          active={selectedIndex == 5 ? 1 : 0}
-          name="Old Tree Page"
-          
         />
         <HomeTabs
           index={6}
