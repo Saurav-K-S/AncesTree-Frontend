@@ -172,7 +172,7 @@ export default function TreePage() {
     parentId: "",
     dob: "",
     alterMobileNumber: "",
-    spouse: null,
+    spouse: "",
     father: "",
     occupation: "",
     address: "",
