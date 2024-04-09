@@ -110,7 +110,7 @@ export default function HomePage() {
         <img src={imageSRC} alt="Not Found" />
       </div>
       <div className="flex justify-between items-center">
-        <div className="w-[100%]">
+        <div className="w-[50%]">
           <div className="flex justify-between pr-10">
             <div className=" h-auto font-semibold text-[44px] ml-[25px] font-IBM-Plex-Mono leading-none">
               {familyName}
@@ -122,14 +122,19 @@ export default function HomePage() {
               EDIT
             </div>
           </div>
-          <div className="w-full h-auto my-3  flex justify-start items-center ">
+          <div className="w-[100%] h-auto my-3  flex justify-start items-center ">
             <div className="bg-hover-element w-[85px] h-[85px] absolute bg-cover -z-10"></div>
             <div className="text-[28px] pl-[30px] font-IBM-Plex-Mono font-semibold text-black">
               History
             </div>
           </div>
-          <div className="h-[165px] text-[18px] ml-[30px] pr-4 font-IBM-Plex-Mono scrollbar-thumb-rounded-sm scrollbar-track-transparent scrollbar scrollbar-thumb-[#FFEEB2] overflow-y-scroll">
+          <div className="h-[165px] w-[100%] text-pretty text-[18px] ml-[30px] pr-4 font-IBM-Plex-Mono scrollbar-thumb-rounded-sm scrollbar-track-transparent scrollbar scrollbar-thumb-[#FFEEB2] overflow-y-scroll overflow-x-">
+            <pre className="text-pretty">
+
             {familyHistory}
+            </pre>
+          
+            
           </div>
         </div>
         <div className="w-[20%] ml-10 h-[70%] mr-16  border-dashed border-black border-[0.6px] rounded-[18px] flex flex-col px-10 justify-start items-center">

@@ -5,6 +5,8 @@ import TreePage from "../treepage/TreePage";
 import Profile from "../profile/Profile";
 import EventPage from "../events/EventPage";
 import AlbumPage from "../album/AlbumPage";
+import OldFamilyTree from "../../oldtree/OldTreePage";
+import ContactUs from "../../contact/ContactUs";
 
 function MainElement({index}) {
     switch (index) {
@@ -18,6 +20,10 @@ function MainElement({index}) {
             return(<EventPage/>)
         case 4:
             return(<AlbumPage/>)
+        case 5:
+            return(<OldFamilyTree/>)
+        case 6:
+            return(<ContactUs/>)
         default:
             break;
     }

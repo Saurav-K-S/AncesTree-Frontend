@@ -12,7 +12,7 @@ export default function TextField(props) {
         <input
           ref={inputRef}
           onChange={(e) => props.func(e.target.value)}
-          className="bg-[#FEFFDD] cursor-none border-[0.1px] border-black border-dashed rounded-[18px] w-[380px]  h-[52px] p-3 mt-[9px]"
+          className="bg-[#FEFFDD] cborder-[0.1px] border-black border-dashed rounded-[18px] w-[380px]  h-[52px] p-3 mt-[9px]"
           type={props.type}
         />
       </div>

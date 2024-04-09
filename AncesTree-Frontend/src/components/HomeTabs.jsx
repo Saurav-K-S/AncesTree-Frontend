@@ -17,8 +17,8 @@ export default function HomeTabs({ name, svg, index, tabClick, active }) {
       <div
         className={
           active == 1
-            ? "mt-[4px] font-IBM-Plex-Mono text-[15px] text-black font-bold"
-            : "mt-[4px] font-IBM-Plex-Mono text-[15px] text-[#6A6A6A]"
+            ? "mt-[4px] font-IBM-Plex-Mono text-[15px] text-black font-bold text-center"
+            : "mt-[4px] font-IBM-Plex-Mono text-[15px] text-[#6A6A6A] text-center"
         }
       >
         {name}
