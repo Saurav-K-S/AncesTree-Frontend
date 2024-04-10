@@ -385,8 +385,9 @@ export default function TreePage() {
         data={chartData}
         pathFunc={"diagonal"}
         orientation="vertical"
-        separation={{ siblings: 2, nonSiblings: 2 }}
+        separation={{ siblings: 3, nonSiblings: 3 }}
         initialDepth={99}
+        depthFactor={250 }
         enableLegacyTransitions={true}
         renderCustomNodeElement={(rd3tProps) =>
           renderCustomNode(
