@@ -387,7 +387,7 @@ export default function TreePage() {
         orientation="vertical"
         separation={{ siblings: 3, nonSiblings: 3 }}
         initialDepth={99}
-        depthFactor={250 }
+        depthFactor={300 }
         enableLegacyTransitions={true}
         renderCustomNodeElement={(rd3tProps) =>
           renderCustomNode(
