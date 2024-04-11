@@ -14,7 +14,7 @@ const formatDate = (dateString) => {
 };
 
 const calculateAge = (dateString0,dateString1) => {
-  if (dateString0=="") {
+  if (dateString0==null) {
     return ""
   }
   if (dateString1==null) {
@@ -129,10 +129,31 @@ const renderCustomNode = (
         r={35}
         className="fill-[#FFEEB2] stroke-black stroke-[0.2px]"
         // onClick={() => toggleNode()}
-        onClick={renderDiv}
+        onClick={toggleNode}
         // onDoubleClick={ }
       />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"></svg>
+      <rect
+        x={33}
+        y={-53  }
+        width={95}
+        // width="160"
+        height="30"
+        rx="18"
+        ry="18"
+        fill="#FEFFDD"
+        className="z-50 stroke-current stroke-[0.5px]"
+        onClick={renderDiv}
+      />
+      <text
+        x={45}
+        y={-35}
+        fill="#000000"
+        className="font-IBM-Plex-Mono font-medium text-[10px] stroke-[0.8px]"
+        onClick={renderDiv}
+      >
+        Show Details
+      </text>
       <rect
         x={33}
         y={2}
@@ -380,13 +401,13 @@ export default function TreePage() {
         </div>
       </div>
       <Tree
-        collapsible={false}
+        collapsible={true}
         translate={{ x: 525, y: 200 }}
         data={chartData}
-        pathFunc={"diagonal"}
+        pathFunc={"step"}
         orientation="vertical"
-        separation={{ siblings: 3, nonSiblings: 3 }}
-        initialDepth={99}
+        separation={{ siblings: 2, nonSiblings: 2 }}
+        initialDepth={0}
         depthFactor={300 }
         enableLegacyTransitions={true}
         renderCustomNodeElement={(rd3tProps) =>
@@ -420,7 +441,7 @@ export default function TreePage() {
                 EDIT
               </div>
               <div
-                className="h-min py-1 px-3 rounded-lg bg-black text-white"
+                className="h-min py-1 px-3 rounded-lg bg-black text-white cursor-pointer"
                 onClick={() => setShowCard(false)}
               >
                 CLOSE
